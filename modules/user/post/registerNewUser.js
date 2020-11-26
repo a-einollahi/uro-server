@@ -4,22 +4,22 @@ module.exports = class RegisterNewUser {
   constructor() {
     this.access = "all";
   }
-
   async handler(payload, user) {
+
     if (!payload) throw new Error("payload is not defined");
     const repo = new Repo();
-
+    
     const foundedUser = await repo.findUserByUsernameOrEmail(
       payload.user_info.username,
       payload.user_info.email
-    );
-
-    if (foundedUser && foundedUser.email === payload.email)
+      );
+      
+    if (foundedUser && foundedUser.email === payload.user_info.email)
       throw new Error("email already is taken");
-    if (foundedUser && foundedUser.username === payload.username)
+    if (foundedUser && foundedUser.username === payload.user_info.username)
       throw new Error("username already is taken");
 
-    const newUser = await repo.createNewUser(
+      const newUser = await repo.createNewUser(
       {
         role: "user",
         gender: payload.user_info.gender,

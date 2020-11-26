@@ -20,6 +20,7 @@ const initialize = sequelize => {
     },
     email: {
       type: Sequelize.STRING,
+      unique: true,
       allowNull: false
     },
     role: {

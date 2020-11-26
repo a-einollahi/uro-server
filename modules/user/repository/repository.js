@@ -22,6 +22,7 @@ module.exports = class Repository {
 
   async findUserByUsernameOrEmail(username, email) {
     return User.findOne({
+      raw: true,
       attributes: { exclude: ["password"] },
       where: { [Op.or]: [{ username }, { email }] },
       include: [
