@@ -28,17 +28,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   session({
-    store: new (require("connect-pg-simple")(session))({
-      conString:
-        "pg://" +
-        "postgres" +
-        ":" +
-        "" +
-        "@" +
-        "localhost" +
-        "/" +
-        process.env.DB_NAME,
-    }),
+    // store: new (require("connect-pg-simple")(session))({
+    //   conString: process.env.DATABASE_URL
+        // "pg://" +
+        // "postgres" +
+        // ":" +
+        // "" +
+        // "@" +
+        // "localhost" +
+        // "/" +
+        // process.env.DB_NAME,
+    // }),
     name: "sqlserver.sid",
     secret: "1some2THING3that4IT5is6SECRET",
     resave: true,
