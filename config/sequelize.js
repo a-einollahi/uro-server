@@ -7,8 +7,7 @@ const sequelize = new Sequelize(DB_URI, {
   pool: {
     max: 5,
     min: 0,
-    idle: 10000,
-	ssl: true
+    idle: 10000
   },
   logging: false,
   dialectOptions: {
