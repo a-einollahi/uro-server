@@ -57,7 +57,8 @@ app.use(passport.session());
 
 app.use("/api", require("./routes/api"));
 app.get('*',(req,res) =>{
-  res.sendFile(path.join(__dirname,'/dist/site/index.html'));
+  res.sendFile('./dist/site/index.html');
+  // res.sendFile(path.join(__dirname,'dist/site/index.html'));
 });
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
