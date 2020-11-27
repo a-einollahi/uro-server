@@ -19,7 +19,7 @@ require("./db/index"); // Load database configuration
 
 app.use(helmet());
 app.use(express.static(path.join(__dirname, "public")));
-// app.use(express.static(path.join(__dirname, "dist/portfolio")));
+app.use(express.static(path.join(__dirname, "dist/site")));
 app.use(require("./config/morgan"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -55,16 +55,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/", require("./routes/index"));
 app.use("/api", require("./routes/api"));
-// app.get("*", (req, res) => {
-// if( context.Response.StatusCode == 404 && !Path.HasExtension( context.Request.Path.Value ) ) {
-//   context.Request.Path = "/index.html";
-//   await next();
-// }
-// return res.redirect("/");
-// });
-
+app.get('*',(req,res) =>{
+  res.sendFile(path.join(__dirname,'dist/site/index.html'));
+});
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

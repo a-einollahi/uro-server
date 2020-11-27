@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 
-const DB_URI = 'postgresql://postgres@localhost:5432/' + process.env.DB_NAME;
+//const DB_URI = 'postgresql://postgres@localhost:5432/' + process.env.DB_NAME;
+const DB_URI = process.envDATABASE_URL
 const sequelize = new Sequelize(DB_URI, {
   dialect: 'postgres',
   pool: {
